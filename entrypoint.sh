@@ -10,5 +10,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+# Buat symbolic link untuk folder storage (wajib untuk gambar/bukti transfer)
+php artisan storage:link
+
 # Start Apache in foreground
 apache2-foreground

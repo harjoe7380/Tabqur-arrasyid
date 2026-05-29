@@ -16,7 +16,7 @@ class FonnteService
      */
     public static function sendMessage($target, $message)
     {
-        $token = env('FONNTE_TOKEN');
+        $token = config('services.fonnte.token');
         
         if (empty($token) || empty($target)) {
             Log::warning('Fonnte token or target is empty. Cannot send WA notification.');
