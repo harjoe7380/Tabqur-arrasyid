@@ -55,7 +55,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalGantiPassword">
+                                        Ganti Password
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -76,5 +80,50 @@
             @yield('content')
         </main>
     </div>
+
+    @auth
+    <!-- Modal Ganti Password -->
+    <div class="modal fade" id="modalGantiPassword" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title">Ganti Password</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{{ route('password.change') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Password Lama</label>
+                    <input type="password" name="current_password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password Baru</label>
+                    <input type="password" name="new_password" class="form-control" required minlength="8">
+                </div>
+                <div class="mb-3">
+                    <label>Konfirmasi Password Baru</label>
+                    <input type="password" name="new_password_confirmation" class="form-control" required minlength="8">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tampilkan Notifikasi Error/Sukses secara global jika ada dari PasswordController -->
+    @if(session('password_success'))
+        <script>alert("{{ session('password_success') }}");</script>
+    @endif
+    @if(session('password_error'))
+        <script>alert("{{ session('password_error') }}");</script>
+    @endif
+    @endauth
+
 </body>
 </html>
