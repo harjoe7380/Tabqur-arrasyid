@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/password/change', [App\Http\Controllers\PasswordController::class, 'update'])->name('password.change');
 
+    Route::view('/offline', 'offline');
+
     // Admin Routes
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function() {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

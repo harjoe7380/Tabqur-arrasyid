@@ -1,0 +1,17 @@
+{
+    "name": "Sistem Tabungan Qurban",
+    "short_name": "Tabqur",
+    "start_url": "/?source=pwa",
+    "background_color": "#ffffff",
+    "theme_color": "#0d6efd",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "192x192 512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
