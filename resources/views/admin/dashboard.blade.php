@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4 fw-bold">Dashboard Admin DKM</h2>
+    <h2 class="mb-4 fw-bold">Dashboard Admin</h2>
     
     <div class="row mb-4">
         <div class="col-md-6 mb-3">
@@ -42,7 +42,7 @@
             🐮 Plotting Hewan
         </a>
         <button class="btn btn-outline-secondary shadow-sm ms-2" data-bs-toggle="modal" data-bs-target="#modalSettings">
-            ⚙️ Pengaturan DKM
+            ⚙️ Pengaturan
         </button>
     </div>
 
@@ -245,7 +245,7 @@
   <div class="modal-dialog">
     <div class="modal-content border-0 shadow">
       <div class="modal-header bg-secondary text-white">
-        <h5 class="modal-title">Pengaturan Profil DKM</h5>
+        <h5 class="modal-title">Pengaturan Profil</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="{{ route('admin.settings.update') }}" method="POST">
