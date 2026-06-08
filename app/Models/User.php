@@ -84,7 +84,7 @@ class User extends Authenticatable
         // 2. Send via Email (Default Laravel behavior)
         try {
             $this->notify(new \Illuminate\Auth\Notifications\ResetPassword($token));
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::error('Gagal mengirim email reset password: ' . $e->getMessage());
         }
     }
