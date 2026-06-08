@@ -53,4 +53,35 @@ class User extends Authenticatable
     {
         return $this->hasOne(Participant::class);
     }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        // 1. Send via WhatsApp if phone number exists
+        if (!empty($this->no_hp)) {
+            $resetUrl = url(route('password.reset', [
+                'token' => $token,
+                'email' => $this->getEmailForPasswordReset(),
+            ], false));
+            
+            $dkmName = \App\Models\Setting::get('dkm_name', config('app.name'));
+            
+            $message = "🔐 *PERMINTAAN RESET PASSWORD*\n\n";
+            $message .= "Halo {$this->name},\n";
+            $message .= "Kami menerima permintaan untuk mengatur ulang kata sandi akun Tabqur Anda di *{$dkmName}*.\n\n";
+            $message .= "Silakan klik tautan di bawah ini untuk membuat password baru:\n";
+            $message .= "{$resetUrl}\n\n";
+            $message .= "_Jika Anda tidak merasa meminta reset password, abaikan pesan ini._";
+
+            \App\Services\FonnteService::sendMessage($this->no_hp, $message);
+        }
+
+        // 2. Send via Email (Default Laravel behavior)
+        $this->notify(new \Illuminate\Auth\Notifications\ResetPassword($token));
+    }
 }

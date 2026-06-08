@@ -1,5 +1,5 @@
 # 🛠️ Buku Pintar Developer: Sistem Tabungan Qurban (TABQUR)
-**Versi: 1.0** *(Dokumen ini akan terus diperbarui jika ada update mayor di masa depan)*
+**Versi: 1.1** *(Update PWA Support)*
 
 Dokumen ini adalah "Buku Pintar" rahasia khusus untuk Anda sebagai Developer. Dokumen ini berisi pemetaan arsitektur, tumpukan teknologi (*tech stack*), alat-alat pihak ketiga, serta daftar kredensial penting agar Anda bisa melakukan pemeliharaan (*maintenance*) atau menyerahkan proyek ini di masa depan tanpa kebingungan.
 
@@ -41,7 +41,16 @@ Jika Anda ingin mengubah logika aplikasi, berfokuslah pada file-file berikut:
 
 ---
 
-## 4. Daftar Kredensial Penting (Credentials)
+## 4. Teknologi Frontend Khusus (PWA)
+Aplikasi ini diubah menjadi **Progressive Web App (PWA)** pada Versi 1.1 agar bisa diinstal di Android. Jika Anda ingin memodifikasi tampilan PWA, periksa:
+*   `public/manifest.json`: Berisi konfigurasi nama aplikasi saat diinstal, warna tema, dan daftar ikon.
+*   `public/serviceworker.js`: Mesin *cache* PWA. File ini menangkap request dan mengarahkan ke halaman *Offline* jika *user* tidak memiliki internet. (Setiap kali update besar pada layout HTML, pastikan mengganti `staticCacheName` misal menjadi `pwa-v2` agar perangkat jamaah menghapus *cache* lama).
+*   `public/icon.svg`: Ikon vektor resolusi tinggi yang dipakai sebagai logo aplikasi di *Home Screen* HP.
+*   `resources/views/offline.blade.php`: Halaman statis (*fallback*) saat tidak ada internet.
+
+---
+
+## 5. Daftar Kredensial Penting (Credentials)
 
 > [!CAUTION]
 > Jangan pernah membagikan halaman ini kepada siapapun (termasuk Admin DKM), karena berisi kata sandi utama *database* dan API.

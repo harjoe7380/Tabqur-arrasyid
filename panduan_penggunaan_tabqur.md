@@ -83,6 +83,17 @@ Panduan ini bisa Anda bagikan (*copy-paste* via WA) kepada para jamaah Anda agar
 - Jamaah bisa melihat daftar rincian tanggal berapa saja mereka pernah menabung di bagian bawah (Riwayat Setoran).
 - Jamaah tidak perlu lagi bertanya sisa kurangnya berapa, karena angka **Kekurangan** sudah tertulis dengan huruf tebal berwarna merah (atau hijau jika sudah lunas).
 
+## 📱 BAGIAN 3: CARA INSTALL APLIKASI DI HP ANDROID
+
+Sistem Tabqur kini sudah mendukung fitur **Progressive Web App (PWA)**, sehingga Anda (dan jamaah) tidak perlu membuka browser setiap saat. Anda bisa menginstalnya layaknya aplikasi dari Play Store!
+
+1. Buka *link* website Masjid (`tabqur-arrasyid.onrender.com` / `tabqur-assalafiyyah.onrender.com`) menggunakan aplikasi **Google Chrome** di HP Android Anda.
+2. Tunggu beberapa saat hingga halaman termuat sempurna.
+3. Di bagian bawah layar, akan muncul *pop-up* bertuliskan **"Tambahkan ke Layar Utama"** (*Add to Home screen*). Silakan diklik.
+4. Jika *pop-up* tidak muncul, klik tanda **Titik Tiga (⋮)** di sudut kanan atas Chrome, lalu pilih **"Tambahkan ke Layar Utama"** (*Install app*).
+5. Klik **Instal**.
+6. Selesai! Coba kembali ke layar utama (Home) HP Anda, Anda akan menemukan *icon* bergambar Masjid berwarna biru dengan nama **Tabqur**. Buka *icon* tersebut, dan aplikasi akan berjalan secara penuh (*full-screen*) tanpa gangguan *browser*!
+
 ---
 
 > [!NOTE]
