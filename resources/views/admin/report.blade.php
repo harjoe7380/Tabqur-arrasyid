@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <title>Laporan Keuangan Tabungan Qurban - {{ config('app.name') }}</title>
+    <title>Laporan Keuangan Tabungan Qurban - {{ \App\Models\Setting::get('dkm_name', 'Tabungan Qurban') }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,7 +70,7 @@
     </div>
 
     <div class="header">
-        <h1>{{ config('app.name') }}</h1>
+        <h1>{{ \App\Models\Setting::get('dkm_name', 'Tabungan Qurban') }}</h1>
         <h2>Laporan Keuangan Tabungan Qurban</h2>
         <p>Dicetak pada: {{ date('d F Y H:i') }}</p>
     </div>

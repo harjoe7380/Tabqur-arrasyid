@@ -88,7 +88,7 @@ class RegisterController extends Controller
                 $msg .= "👤 *Email*: " . $user->email . "\n";
                 $msg .= "🔑 *Password*: " . $data['password'] . "\n\n";
                 $msg .= "Silakan simpan informasi ini untuk keperluan login Anda di masa mendatang.\n\n";
-                $msg .= "Terima kasih,\nPengurus " . config('app.name');
+                $msg .= "Terima kasih,\nPengurus " . \App\Models\Setting::get('dkm_name', 'Tabungan Qurban');
 
                 \App\Services\FonnteService::sendMessage($user->no_hp, $msg);
             }

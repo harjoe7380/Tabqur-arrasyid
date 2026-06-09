@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Struk Setoran Tabungan Kurban</title>
     <style>
-        body { font-family: sans-serif; font-size: 14px; color: #333; }
-        .header { text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 20px; margin-bottom: 20px; }
-        .header h2 { margin: 0; color: #2c3e50; }
-        .header p { margin: 5px 0 0; color: #7f8c8d; }
-        .content table { width: 100%; border-collapse: collapse; }
-        .content table th, .content table td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
-        .footer { margin-top: 30px; text-align: center; color: #95a5a6; font-size: 12px; }
-        .total-row td { font-weight: bold; font-size: 16px; background-color: #f9f9f9; }
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            color: #7f8c8d;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .content table th,
+        .content table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 12px;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h2>{{ $dkm_name }}</h2>
         <p>{{ $dkm_address }} | WA Admin: {{ $admin_phone }}</p>
     </div>
 
-    <h3 style="text-align: center;">TANDA TERIMA SETORAN KURBAN</h3>
+    <h3 style="text-align: center;">TANDA TERIMA SETORAN QURBAN</h3>
 
     <div class="content">
         <table>
@@ -57,12 +98,15 @@
     </div>
 
     @if($transaction->proof_path)
-    @php $proofSrc = str_starts_with($transaction->proof_path, 'data:image') ? $transaction->proof_path : public_path('storage/' . $transaction->proof_path); @endphp
-    <div style="margin-top: 30px; text-align: center;">
-        <h4 style="color: #7f8c8d; border-bottom: 1px dashed #ccc; padding-bottom: 5px; display: inline-block;">Lampiran: Bukti Pembayaran</h4>
-        <br>
-        <img src="{{ $proofSrc }}" style="max-width: 80%; max-height: 400px; margin-top: 10px; border: 1px solid #ddd; padding: 5px;">
-    </div>
+        @php $proofSrc = str_starts_with($transaction->proof_path, 'data:image') ? $transaction->proof_path : public_path('storage/' . $transaction->proof_path); @endphp
+        <div style="margin-top: 30px; text-align: center;">
+            <h4 style="color: #7f8c8d; border-bottom: 1px dashed #ccc; padding-bottom: 5px; display: inline-block;">
+                Lampiran: Bukti Pembayaran</h4>
+            <br>
+            <img src="{{ $proofSrc }}"
+                style="max-width: 80%; max-height: 400px; margin-top: 10px; border: 1px solid #ddd; padding: 5px;">
+        </div>
     @endif
 </body>
+
 </html>
