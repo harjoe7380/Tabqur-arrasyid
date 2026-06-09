@@ -202,7 +202,7 @@
         <h5 class="modal-title">Catat Setoran / Penarikan</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{ route('admin.transactions.store') }}" method="POST">
+      <form action="{{ route('admin.transactions.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -228,6 +228,11 @@
             <div class="mb-3">
                 <label>Tanggal</label>
                 <input type="date" name="date" class="form-control" value="{{ date('Y-m-d') }}" required>
+            </div>
+            <div class="mb-3">
+                <label>Foto Bukti Transfer (Opsional)</label>
+                <input type="file" name="proof" class="form-control" accept="image/jpeg,image/png,image/jpg">
+                <small class="text-muted">Upload jika jamaah mengirimkan bukti via WhatsApp ke Admin.</small>
             </div>
             <div class="mb-3">
                 <label>Keterangan Tambahan</label>

@@ -238,7 +238,7 @@
                   <div class="accordion-body">
                     Anda bisa mentransfer uang ke rekening resmi DKM yaitu: <br>
                     <strong>{{ \App\Models\Setting::get('bank_account', 'BSI 1234567890 a.n DKM Masjid') }}</strong>.<br>
-                    Setelah transfer, segera konfirmasi melalui tombol "Hubungi Kami" di halaman depan agar Admin dapat mencatat setoran Anda di sistem.
+                    Setelah transfer, segera konfirmasi melalui tombol <strong>"Konfirmasi Setoran"</strong> di halaman utama agar Admin dapat mencatat setoran Anda di sistem.
                   </div>
                 </div>
               </div>

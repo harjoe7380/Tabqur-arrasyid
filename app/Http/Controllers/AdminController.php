@@ -143,9 +143,17 @@ class AdminController extends Controller
             'amount' => 'required|numeric|min:1',
             'date' => 'required|date',
             'description' => 'nullable|string|max:255',
+            'proof' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $trx = Transaction::create($request->all() + ['status' => 'verified']);
+        $data = $request->except('proof');
+        $data['status'] = 'verified';
+
+        if ($request->hasFile('proof')) {
+            $data['proof_path'] = $request->file('proof')->store('proofs', 'public');
+        }
+
+        $trx = Transaction::create($data);
 
         if ($trx->type == 'setoran') {
             $participant = Participant::with('user')->find($trx->participant_id);
