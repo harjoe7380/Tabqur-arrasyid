@@ -51,7 +51,20 @@ class AdminController extends Controller
             'target_amount' => $request->target_amount,
         ]);
 
-        return back()->with('success', 'Jamaah berhasil didaftarkan.');
+        if ($user->no_hp) {
+            $msg = "Assalamu'alaikum Bpk/Ibu *" . $user->name . "*,\n\n";
+            $msg .= "Pendaftaran Anda sebagai peserta tabungan kurban telah berhasil.\n\n";
+            $msg .= "Berikut adalah detail akun Anda untuk mengakses sistem:\n";
+            $msg .= "🔗 *Link Akses*: " . url('/') . "\n";
+            $msg .= "👤 *Email*: " . $user->email . "\n";
+            $msg .= "🔑 *Password*: password123\n\n";
+            $msg .= "Silakan login dan disarankan untuk segera mengubah password default Anda demi keamanan.\n\n";
+            $msg .= "Terima kasih,\nPengurus " . config('app.name');
+
+            FonnteService::sendMessage($user->no_hp, $msg);
+        }
+
+        return back()->with('success', 'Jamaah berhasil didaftarkan dan notifikasi telah dikirim.');
     }
 
     public function participants()

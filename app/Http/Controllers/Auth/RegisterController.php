@@ -80,6 +80,19 @@ class RegisterController extends Controller
                 'target_amount' => $data['target_amount'],
             ]);
 
+            if ($user->no_hp) {
+                $msg = "Assalamu'alaikum Bpk/Ibu *" . $user->name . "*,\n\n";
+                $msg .= "Pendaftaran Anda sebagai peserta tabungan kurban telah berhasil.\n\n";
+                $msg .= "Berikut adalah detail akun Anda untuk mengakses sistem:\n";
+                $msg .= "🔗 *Link Akses*: " . url('/') . "\n";
+                $msg .= "👤 *Email*: " . $user->email . "\n";
+                $msg .= "🔑 *Password*: " . $data['password'] . "\n\n";
+                $msg .= "Silakan simpan informasi ini untuk keperluan login Anda di masa mendatang.\n\n";
+                $msg .= "Terima kasih,\nPengurus " . config('app.name');
+
+                \App\Services\FonnteService::sendMessage($user->no_hp, $msg);
+            }
+
             return $user;
         });
     }
