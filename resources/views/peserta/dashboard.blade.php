@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold mb-0">Portal Peserta Kurban</h2>
+        <h2 class="fw-bold mb-0">Portal Peserta Qurban</h2>
         @if(!isset($error))
         <button class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modalLaporSetoran">
             + Lapor Setoran
@@ -31,7 +31,7 @@
             <div class="card-body text-center py-5">
                 <h5 class="text-uppercase text-muted fw-bold mb-3">Total Tabungan Saat Ini</h5>
                 <h1 class="display-4 text-success fw-bold mb-3">Rp {{ number_format($totalSavings, 0, ',', '.') }}</h1>
-                <p class="text-muted mb-4">Target Kurban: <strong>Rp {{ number_format($participant->target_amount, 0, ',', '.') }}</strong></p>
+                <p class="text-muted mb-4">Target Qurban: <strong>Rp {{ number_format($participant->target_amount, 0, ',', '.') }}</strong></p>
                 
                 <div class="progress mb-2" style="height: 25px; border-radius: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-success fw-bold" role="progressbar" style="width: {{ $progress }}%;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100">
@@ -42,7 +42,7 @@
                 @if($participant->target_amount - $totalSavings > 0)
                     <small class="text-danger fw-bold">Kurang Rp {{ number_format($participant->target_amount - $totalSavings, 0, ',', '.') }} lagi untuk mencapai target.</small>
                 @else
-                    <small class="text-success fw-bold">🎉 Alhamdulillah! Tabungan Anda sudah memenuhi target kurban.</small>
+                    <small class="text-success fw-bold">🎉 Alhamdulillah! Tabungan Anda sudah memenuhi target qurban.</small>
                 @endif
             </div>
         </div>

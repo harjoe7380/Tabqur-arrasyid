@@ -48,16 +48,16 @@ class SendMonthlyReport extends Command
             if ($p->user->no_hp) {
                 $msgJamaah = "Assalamu'alaikum Bpk/Ibu *" . $p->user->name . "*,\n\n";
                 $msgJamaah .= "Terima kasih banyak telah berpartisipasi dalam program " . Setting::get('dkm_name', config('app.name')) . ".\n\n";
-                $msgJamaah .= "Berikut adalah rekap tabungan kurban Anda di awal bulan ini:\n";
-                $msgJamaah .= "🎯 Target Kurban: *Rp " . number_format($p->target_amount, 0, ',', '.') . "*\n";
+                $msgJamaah .= "Berikut adalah rekap tabungan qurban Anda di awal bulan ini:\n";
+                $msgJamaah .= "🎯 Target Qurban: *Rp " . number_format($p->target_amount, 0, ',', '.') . "*\n";
                 $msgJamaah .= "💰 Total Terkumpul: *Rp " . number_format($terkumpul, 0, ',', '.') . "*\n";
                 
                 $kekurangan = max(0, $p->target_amount - $terkumpul);
                 if ($kekurangan > 0) {
                     $msgJamaah .= "🔻 Sisa Target: *Rp " . number_format($kekurangan, 0, ',', '.') . "*\n\n";
-                    $msgJamaah .= "Ayo, tetap semangat menabung! Sedikit demi sedikit, insya Allah niat kurban Bpk/Ibu akan terwujud. 🚀\n";
+                    $msgJamaah .= "Ayo, tetap semangat menabung! Sedikit demi sedikit, insya Allah niat qurban Bpk/Ibu akan terwujud. 🚀\n";
                 } else {
-                    $msgJamaah .= "✨ Alhamdulillah, tabungan Anda sudah memenuhi target kurban!\n\n";
+                    $msgJamaah .= "✨ Alhamdulillah, tabungan Anda sudah memenuhi target qurban!\n\n";
                 }
                 
                 $msgJamaah .= "\nSemoga Allah memberkahi rezeki Bpk/Ibu. Aamiin.\n";

@@ -29,7 +29,7 @@ class GroupController extends Controller
             'animal_type' => 'required|string',
             'purchase_price' => 'nullable|numeric'
         ]));
-        return back()->with('success', 'Kelompok kurban berhasil dibuat.');
+        return back()->with('success', 'Kelompok qurban berhasil dibuat.');
     }
 
     public function assignParticipant(Request $request, QurbanGroup $group)

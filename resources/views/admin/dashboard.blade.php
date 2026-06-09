@@ -8,7 +8,7 @@
         <div class="col-md-6 mb-3">
             <div class="card bg-primary text-white shadow-sm border-0 h-100">
                 <div class="card-body d-flex flex-column justify-content-center">
-                    <h6 class="text-white-50 text-uppercase fw-bold">Total Tabungan Kurban</h6>
+                    <h6 class="text-white-50 text-uppercase fw-bold">Total Tabungan Qurban</h6>
                     <h2 class="fw-bold mb-0">Rp {{ number_format($totalSavings, 0, ',', '.') }}</h2>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                 <input type="password" name="password" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Target Harga Hewan Kurban (Rp)</label>
+                <label>Target Harga Hewan Qurban (Rp)</label>
                 <input type="number" name="target_amount" class="form-control" value="3500000" required>
             </div>
         </div>

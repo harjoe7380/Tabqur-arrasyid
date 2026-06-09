@@ -53,7 +53,7 @@ class AdminController extends Controller
 
         if ($user->no_hp) {
             $msg = "Assalamu'alaikum Bpk/Ibu *" . $user->name . "*,\n\n";
-            $msg .= "Pendaftaran Anda sebagai peserta tabungan kurban telah berhasil.\n\n";
+            $msg .= "Pendaftaran Anda sebagai peserta tabungan qurban telah berhasil.\n\n";
             $msg .= "Berikut adalah detail akun Anda untuk mengakses sistem:\n";
             $msg .= "🔗 *Link Akses*: " . url('/') . "\n";
             $msg .= "👤 *Email*: " . $user->email . "\n";
@@ -167,12 +167,12 @@ class AdminController extends Controller
                 $totalSavings = $transactions->where('type', 'setoran')->sum('amount') - $transactions->where('type', 'penarikan')->sum('amount');
                 
                 $msg = "Assalamu'alaikum Bpk/Ibu *" . $participant->user->name . "*,\n\n";
-                $msg .= "Setoran tabungan kurban Anda sebesar *Rp " . number_format($trx->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($trx->date)->format('d/m/Y') . "* telah kami terima.\n";
+                $msg .= "Setoran tabungan qurban Anda sebesar *Rp " . number_format($trx->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($trx->date)->format('d/m/Y') . "* telah kami terima.\n";
                 if ($trx->description) {
                     $msg .= "Keterangan: " . $trx->description . "\n";
                 }
                 $msg .= "\n*Total Tabungan Saat Ini: Rp " . number_format($totalSavings, 0, ',', '.') . "*\n";
-                $msg .= "Target Kurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
+                $msg .= "Target Qurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
                 $msg .= "Terima kasih,\nPengurus " . config('app.name');
 
                 FonnteService::sendMessage($participant->user->no_hp, $msg);
@@ -198,12 +198,12 @@ class AdminController extends Controller
                 $totalSavings = $transactions->where('type', 'setoran')->sum('amount') - $transactions->where('type', 'penarikan')->sum('amount');
                 
                 $msg = "Assalamu'alaikum Bpk/Ibu *" . $participant->user->name . "*,\n\n";
-                $msg .= "✅ Laporan Setoran tabungan kurban Anda sebesar *Rp " . number_format($transaction->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($transaction->date)->format('d/m/Y') . "* *TELAH DIVERIFIKASI* oleh Bendahara.\n";
+                $msg .= "✅ Laporan Setoran tabungan qurban Anda sebesar *Rp " . number_format($transaction->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($transaction->date)->format('d/m/Y') . "* *TELAH DIVERIFIKASI* oleh Bendahara.\n";
                 if ($transaction->description) {
                     $msg .= "Keterangan: " . $transaction->description . "\n";
                 }
                 $msg .= "\n*Total Tabungan Saat Ini: Rp " . number_format($totalSavings, 0, ',', '.') . "*\n";
-                $msg .= "Target Kurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
+                $msg .= "Target Qurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
                 $msg .= "Terima kasih,\nPengurus " . config('app.name');
 
                 FonnteService::sendMessage($participant->user->no_hp, $msg);
@@ -232,11 +232,11 @@ class AdminController extends Controller
         
         if ($request->export === 'pdf') {
             $pdf = Pdf::loadView('admin.report', compact('participants', 'totalTerkumpul', 'totalTarget'));
-            return $pdf->download('Laporan_Keuangan_Kurban_' . date('Ymd') . '.pdf');
+            return $pdf->download('Laporan_Keuangan_Qurban_' . date('Ymd') . '.pdf');
         }
         
         if ($request->export === 'csv') {
-            $fileName = 'Laporan_Keuangan_Kurban_' . date('Ymd') . '.csv';
+            $fileName = 'Laporan_Keuangan_Qurban_' . date('Ymd') . '.csv';
             $headers = [
                 "Content-type"        => "text/csv",
                 "Content-Disposition" => "attachment; filename=$fileName",
@@ -244,7 +244,7 @@ class AdminController extends Controller
                 "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
                 "Expires"             => "0"
             ];
-            $columns = ['Nama Jamaah', 'Target Kurban (Rp)', 'Terkumpul (Rp)', 'Kekurangan (Rp)'];
+            $columns = ['Nama Jamaah', 'Target Qurban (Rp)', 'Terkumpul (Rp)', 'Kekurangan (Rp)'];
 
             $callback = function() use($participants, $columns, $totalTerkumpul, $totalTarget) {
                 $file = fopen('php://output', 'w');

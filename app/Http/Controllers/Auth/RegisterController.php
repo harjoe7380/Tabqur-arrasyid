@@ -82,7 +82,7 @@ class RegisterController extends Controller
 
             if ($user->no_hp) {
                 $msg = "Assalamu'alaikum Bpk/Ibu *" . $user->name . "*,\n\n";
-                $msg .= "Pendaftaran Anda sebagai peserta tabungan kurban telah berhasil.\n\n";
+                $msg .= "Pendaftaran Anda sebagai peserta tabungan qurban telah berhasil.\n\n";
                 $msg .= "Berikut adalah detail akun Anda untuk mengakses sistem:\n";
                 $msg .= "🔗 *Link Akses*: " . url('/') . "\n";
                 $msg .= "👤 *Email*: " . $user->email . "\n";
@@ -99,7 +99,7 @@ class RegisterController extends Controller
                 $adminMsg = "⚠️ *Pendaftaran Jamaah Baru* ⚠️\n\n";
                 $adminMsg .= "Ada pendaftar baru di sistem Tabqur:\n";
                 $adminMsg .= "Nama: *" . $user->name . "*\n";
-                $adminMsg .= "Target Kurban: *Rp " . number_format($data['target_amount'], 0, ',', '.') . "*\n";
+                $adminMsg .= "Target Qurban: *Rp " . number_format($data['target_amount'], 0, ',', '.') . "*\n";
                 $adminMsg .= "No WA: " . $user->no_hp . "\n\n";
                 $adminMsg .= "Mohon cek Dasbor Admin untuk info lebih lanjut.";
 

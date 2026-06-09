@@ -40,12 +40,12 @@ class ReceiptController extends Controller
         
         $msg = "Assalamu'alaikum Bpk/Ibu *" . $participant->user->name . "*,\n\n";
         $msg .= "*(Kirim Ulang Struk)*\n";
-        $msg .= "Setoran tabungan kurban Anda sebesar *Rp " . number_format($transaction->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($transaction->date)->format('d/m/Y') . "* *TELAH DIVERIFIKASI*.\n";
+        $msg .= "Setoran tabungan qurban Anda sebesar *Rp " . number_format($transaction->amount, 0, ',', '.') . "* pada tanggal *" . \Carbon\Carbon::parse($transaction->date)->format('d/m/Y') . "* *TELAH DIVERIFIKASI*.\n";
         if ($transaction->description) {
             $msg .= "Keterangan: " . $transaction->description . "\n";
         }
         $msg .= "\n*Total Tabungan Saat Ini: Rp " . number_format($totalSavings, 0, ',', '.') . "*\n";
-        $msg .= "Target Kurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
+        $msg .= "Target Qurban: Rp " . number_format($participant->target_amount, 0, ',', '.') . "\n\n";
         $msg .= "Terima kasih,\nPengurus " . Setting::get('dkm_name', config('app.name'));
 
         $sent = FonnteService::sendMessage($participant->user->no_hp, $msg);

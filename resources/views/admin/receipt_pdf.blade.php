@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Struk Setoran Tabungan Kurban</title>
+    <title>Struk Setoran Tabungan Qurban</title>
     <style>
         body {
             font-family: sans-serif;
@@ -79,7 +79,7 @@
             </tr>
             <tr>
                 <th>Keterangan</th>
-                <td>{{ $transaction->description ?? 'Setoran Tabungan Kurban' }}</td>
+                <td>{{ $transaction->description ?? 'Setoran Tabungan Qurban' }}</td>
             </tr>
             <tr>
                 <th>Status</th>
@@ -93,8 +93,8 @@
     </div>
 
     <div class="footer">
-        <p>Jazakumullah Khairan Katsiran. Semoga Allah menerima niat kurban Bpk/Ibu.</p>
-        <p><em>Struk ini sah dan digenerate otomatis oleh Sistem Tabungan Kurban.</em></p>
+        <p>Jazakumullah Khairan Katsiran. Semoga Allah menerima niat qurban Bpk/Ibu.</p>
+        <p><em>Struk ini sah dan digenerate otomatis oleh Sistem Tabungan Qurban.</em></p>
     </div>
 
     @if($transaction->proof_path)

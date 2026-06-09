@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold mb-0">Manajemen Kelompok Kurban</h2>
+        <h2 class="fw-bold mb-0">Manajemen Kelompok Qurban</h2>
         <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">Kembali ke Dasbor</a>
     </div>
 

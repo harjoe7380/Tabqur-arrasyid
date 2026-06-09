@@ -13,7 +13,7 @@ class ParticipantDashboardController extends Controller
     {
         $participant = Participant::where('user_id', Auth::id())->first();
         if (!$participant) {
-            return view('peserta.dashboard', ['error' => 'Anda belum terdaftar sebagai peserta kurban.']);
+            return view('peserta.dashboard', ['error' => 'Anda belum terdaftar sebagai peserta qurban.']);
         }
 
         $transactions = $participant->transactions()->orderBy('date', 'desc')->get();

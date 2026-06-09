@@ -50,7 +50,7 @@ class SendQurbanReminders extends Command
                 $kekurangan = $p->target_amount - $terkumpul;
                 $msg = "Assalamu'alaikum Bpk/Ibu *" . $p->user->name . "*,\n\n";
                 $msg .= "*(Pesan Otomatis)*\n";
-                $msg .= "Mengingatkan untuk setoran tabungan Kurban bulan ini.\n\n";
+                $msg .= "Mengingatkan untuk setoran tabungan Qurban bulan ini.\n\n";
                 $msg .= "Terkumpul saat ini: *Rp " . number_format($terkumpul, 0, ',', '.') . "*\n";
                 $msg .= "Kekurangan: Rp " . number_format($kekurangan, 0, ',', '.') . "\n\n";
                 $msg .= "Silakan login ke portal atau hubungi Bendahara DKM. Jazakumullah khairan.\n\n- " . \App\Models\Setting::get('dkm_name', config('app.name'));

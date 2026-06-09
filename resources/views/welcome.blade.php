@@ -158,7 +158,7 @@
         </div>
 
         <h1 class="brand-title">{{ \App\Models\Setting::get('dkm_name', config('app.name', 'Tabungan Qurban')) }}</h1>
-        <p class="brand-subtitle">Sistem Manajemen Kurban Digital Terpadu</p>
+        <p class="brand-subtitle">Sistem Manajemen Qurban Digital Terpadu</p>
 
         <!-- Links -->
         @auth
@@ -168,7 +168,7 @@
                 <a href="{{ route('peserta.dashboard') }}" class="link-btn btn-primary-custom">Masuk Dashboard</a>
             @endif
         @else
-            <a href="{{ route('register') }}" class="link-btn btn-primary-custom">Daftar Tabungan Kurban</a>
+            <a href="{{ route('register') }}" class="link-btn btn-primary-custom">Daftar Tabungan Qurban</a>
             <a href="{{ route('login') }}" class="link-btn">Login ke Akun Anda</a>
         @endauth
         
@@ -205,12 +205,12 @@
               <div class="accordion-item border-0 mb-2 shadow-sm rounded">
                 <h2 class="accordion-header" id="headingOne">
                   <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    1. Apa itu Sistem Tabungan Kurban?
+                    1. Apa itu Sistem Tabungan Qurban?
                   </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
                   <div class="accordion-body">
-                    Aplikasi ini adalah platform digital untuk memudahkan Jamaah menabung dana kurban secara bertahap. DKM Masjid dapat memantau uang masuk, dan Jamaah bisa melihat progres tabungannya kapan saja.
+                    Aplikasi ini adalah platform digital untuk memudahkan Jamaah menabung dana qurban secara bertahap. DKM Masjid dapat memantau uang masuk, dan Jamaah bisa melihat progres tabungannya kapan saja.
                   </div>
                 </div>
               </div>
@@ -224,7 +224,7 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
                   <div class="accordion-body">
-                    Anda dapat menekan tombol <strong>Daftar Tabungan Kurban</strong> di halaman utama, isi data diri, target harga hewan kurban, dan nomor WhatsApp. Setelah itu, akun Anda akan dibuatkan dan Anda bisa langsung login.
+                    Anda dapat menekan tombol <strong>Daftar Tabungan Qurban</strong> di halaman utama, isi data diri, target harga hewan qurban, dan nomor WhatsApp. Setelah itu, akun Anda akan dibuatkan dan Anda bisa langsung login.
                   </div>
                 </div>
               </div>
@@ -283,7 +283,7 @@
                 📱 Login ke Aplikasi<br>
                 <small class="fw-normal">Lewat menu "Lapor Setoran" di Dasbor Anda.</small>
             </a>
-            <a href="https://wa.me/{{ $adminPhone }}?text={{ urlencode('Assalamu\'alaikum Admin, saya ingin mengonfirmasi setoran tabungan kurban saya.') }}" target="_blank" class="btn btn-outline-success w-100 fw-bold rounded-pill p-3">
+            <a href="https://wa.me/{{ $adminPhone }}?text={{ urlencode('Assalamu\'alaikum Admin, saya ingin mengonfirmasi setoran tabungan qurban saya.') }}" target="_blank" class="btn btn-outline-success w-100 fw-bold rounded-pill p-3">
                 💬 Konfirmasi via WhatsApp<br>
                 <small class="fw-normal">Hubungi admin untuk verifikasi manual.</small>
             </a>

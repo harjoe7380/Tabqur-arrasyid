@@ -15,7 +15,7 @@
     @endif
 
     <div class="card shadow-sm border-0 mb-4">
-        <div class="card-header bg-white fw-bold py-3">Daftar Jamaah Kurban</div>
+        <div class="card-header bg-white fw-bold py-3">Daftar Jamaah Qurban</div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
@@ -102,7 +102,7 @@
                 <small class="text-muted">Password otomatis: <strong>password123</strong></small>
             </div>
             <div class="mb-3">
-                <label>Target Tabungan Kurban (Rp)</label>
+                <label>Target Tabungan Qurban (Rp)</label>
                 <input type="number" name="target_amount" class="form-control" value="3500000" required>
             </div>
         </div>
@@ -140,7 +140,7 @@
                 <input type="email" name="email" id="edit_email" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Target Tabungan Kurban (Rp)</label>
+                <label>Target Tabungan Qurban (Rp)</label>
                 <input type="number" name="target_amount" id="edit_target_amount" class="form-control" required>
             </div>
         </div>
