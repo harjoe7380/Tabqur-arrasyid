@@ -136,6 +136,9 @@
                             </td>
                             <td class="fw-bold">Rp {{ number_format($trx->amount, 0, ',', '.') }}</td>
                             <td>
+                                @if($trx->proof_path)
+                                    <a href="{{ asset('storage/' . $trx->proof_path) }}" target="_blank" download class="btn btn-sm btn-outline-primary" title="Download Bukti">⬇️ Bukti</a>
+                                @endif
                                 <a href="{{ route('admin.receipt.pdf', $trx->id) }}" class="btn btn-sm btn-outline-danger">📄 PDF</a>
                                 <a href="{{ route('admin.receipt.wa', $trx->id) }}" class="btn btn-sm btn-outline-success">💬 WA</a>
                             </td>
@@ -248,9 +251,27 @@
         <h5 class="modal-title">Pengaturan Profil</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{ route('admin.settings.update') }}" method="POST">
+      <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
+            <div class="mb-3">
+                <label>Logo Tabqur (Opsional)</label>
+                <input type="file" name="logo_tabqur" class="form-control" accept="image/*">
+                @if(\App\Models\Setting::get('logo_tabqur'))
+                    <div class="mt-2">
+                        <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_tabqur')) }}" alt="Logo Tabqur" class="img-thumbnail" style="max-height: 60px">
+                    </div>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label>Logo DKM (Opsional)</label>
+                <input type="file" name="logo_dkm" class="form-control" accept="image/*">
+                @if(\App\Models\Setting::get('logo_dkm'))
+                    <div class="mt-2">
+                        <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_dkm')) }}" alt="Logo DKM" class="img-thumbnail" style="max-height: 60px">
+                    </div>
+                @endif
+            </div>
             <div class="mb-3">
                 <label>Nama Masjid / DKM</label>
                 <input type="text" name="dkm_name" class="form-control" value="{{ \App\Models\Setting::get('dkm_name', config('app.name')) }}" required>

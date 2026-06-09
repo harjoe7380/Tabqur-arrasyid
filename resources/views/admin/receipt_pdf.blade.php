@@ -55,5 +55,13 @@
         <p>Jazakumullah Khairan Katsiran. Semoga Allah menerima niat kurban Bpk/Ibu.</p>
         <p><em>Struk ini sah dan digenerate otomatis oleh Sistem Tabungan Kurban.</em></p>
     </div>
+
+    @if($transaction->proof_path)
+    <div style="margin-top: 30px; text-align: center;">
+        <h4 style="color: #7f8c8d; border-bottom: 1px dashed #ccc; padding-bottom: 5px; display: inline-block;">Lampiran: Bukti Pembayaran</h4>
+        <br>
+        <img src="{{ public_path('storage/' . $transaction->proof_path) }}" style="max-width: 80%; max-height: 400px; margin-top: 10px; border: 1px solid #ddd; padding: 5px;">
+    </div>
+    @endif
 </body>
 </html>

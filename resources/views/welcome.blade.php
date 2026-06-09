@@ -19,18 +19,11 @@
             display: flex;
             flex-direction: column;
             margin: 0;
-        }
-        .hero-section {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 1rem;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         /* Ornamen Lingkaran Latar Belakang */
-        .hero-section::before {
+        body::before {
             content: "";
             position: absolute;
             top: -100px;
@@ -42,9 +35,9 @@
             filter: blur(40px);
             z-index: 0;
         }
-        .hero-section::after {
+        body::after {
             content: "";
-            position: absolute;
+            position: fixed;
             bottom: -150px;
             right: -100px;
             width: 500px;
@@ -55,85 +48,219 @@
             z-index: 0;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            padding: 4rem 2rem;
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-            z-index: 1;
+        .linktree-container {
             position: relative;
+            z-index: 1;
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            padding: 5px;
+        }
+
         .brand-title {
             font-weight: 800;
             color: #2c3e50;
-            margin-bottom: 1.2rem;
-            font-size: 3rem;
-            background: linear-gradient(120deg, #1abc9c, #2980b9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            text-align: center;
         }
+
         .brand-subtitle {
             color: #576574;
-            font-size: 1.15rem;
-            margin-bottom: 3rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
         }
-        .btn-custom {
+
+        .link-btn {
+            display: block;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
             border-radius: 50px;
-            padding: 14px 36px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            text-align: center;
             font-weight: 600;
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
         }
-        .btn-login {
-            background: linear-gradient(to right, #1abc9c, #16a085);
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            color: #1abc9c;
+        }
+
+        .link-btn.btn-primary-custom {
+            background: linear-gradient(120deg, #1abc9c, #16a085);
             color: white;
             border: none;
-            box-shadow: 0 8px 20px rgba(26, 188, 156, 0.3);
         }
-        .btn-login:hover {
-            background: linear-gradient(to right, #16a085, #1abc9c);
+        .link-btn.btn-primary-custom:hover {
+            box-shadow: 0 8px 25px rgba(26, 188, 156, 0.3);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(26, 188, 156, 0.4);
         }
-        @media (max-width: 768px) {
-            .brand-title { font-size: 2.2rem; }
-            .glass-card { padding: 3rem 1.5rem; }
+
+        /* Modal Customization */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e8f8f5;
+            color: #16a085;
         }
     </style>
 </head>
 <body>
-    <div class="hero-section">
-        <div class="glass-card">
-            <h1 class="brand-title">{{ \App\Models\Setting::get('dkm_name', config('app.name', 'Tabungan Qurban')) }}</h1>
-            <p class="brand-subtitle">Sistem Manajemen Kurban Digital Terpadu untuk kemudahan transaksi DKM dan Jamaah.</p>
-            
-            <div class="d-flex justify-content-center gap-3">
-                @auth
-                    @if(auth()->user()->role === 'admin')
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-custom btn-login">Masuk Dashboard</a>
-                    @else
-                        <a href="{{ route('peserta.dashboard') }}" class="btn btn-custom btn-login">Masuk Dashboard</a>
-                    @endif
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-custom btn-login">Login ke Akun Anda</a>
-                @endauth
-            </div>
+    <div class="linktree-container">
+        <!-- Logos -->
+        <div class="logo-container">
+            @if(\App\Models\Setting::get('logo_tabqur'))
+                <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_tabqur')) }}" alt="Logo Tabqur" class="logo-img">
+            @endif
+            @if(\App\Models\Setting::get('logo_dkm'))
+                <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_dkm')) }}" alt="Logo DKM" class="logo-img">
+            @endif
+            @if(!\App\Models\Setting::get('logo_tabqur') && !\App\Models\Setting::get('logo_dkm'))
+                <div class="logo-img d-flex align-items-center justify-content-center bg-success text-white fw-bold fs-3">
+                    {{ substr(\App\Models\Setting::get('dkm_name', config('app.name')), 0, 1) }}
+                </div>
+            @endif
         </div>
+
+        <h1 class="brand-title">{{ \App\Models\Setting::get('dkm_name', config('app.name', 'Tabungan Qurban')) }}</h1>
+        <p class="brand-subtitle">Sistem Manajemen Kurban Digital Terpadu</p>
+
+        <!-- Links -->
+        @auth
+            @if(auth()->user()->role === 'admin')
+                <a href="{{ route('admin.dashboard') }}" class="link-btn btn-primary-custom">Masuk Dashboard Admin</a>
+            @else
+                <a href="{{ route('peserta.dashboard') }}" class="link-btn btn-primary-custom">Masuk Dashboard</a>
+            @endif
+        @else
+            <a href="{{ route('register') }}" class="link-btn btn-primary-custom">Daftar Tabungan Kurban</a>
+            <a href="{{ route('login') }}" class="link-btn">Login ke Akun Anda</a>
+        @endauth
+        
+        @php
+            $adminPhone = \App\Models\Setting::get('admin_phone', '08111251918');
+            // format phone number for whatsapp link
+            if(substr($adminPhone, 0, 1) == '0') {
+                $adminPhone = '62' . substr($adminPhone, 1);
+            }
+        @endphp
+        <a href="https://wa.me/{{ $adminPhone }}" target="_blank" class="link-btn">Hubungi Kami (WhatsApp)</a>
+        
+        <button type="button" class="link-btn" data-bs-toggle="modal" data-bs-target="#faqModal">
+            FAQ (Tanya Jawab)
+        </button>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+            <h5 class="modal-title fw-bold" id="faqModalLabel">Tanya Jawab (FAQ)</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            
+            <div class="accordion" id="accordionFAQ">
+              <!-- FAQ Item 1 -->
+              <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    1. Apa itu Sistem Tabungan Kurban?
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    Aplikasi ini adalah platform digital untuk memudahkan Jamaah menabung dana kurban secara bertahap. DKM Masjid dapat memantau uang masuk, dan Jamaah bisa melihat progres tabungannya kapan saja.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    2. Bagaimana cara mendaftar?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    Anda dapat menekan tombol <strong>Daftar Tabungan Kurban</strong> di halaman utama, isi data diri, target harga hewan kurban, dan nomor WhatsApp. Setelah itu, akun Anda akan dibuatkan dan Anda bisa langsung login.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    3. Ke mana saya harus transfer uang tabungan?
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    Anda bisa mentransfer uang ke rekening resmi DKM yaitu: <br>
+                    <strong>{{ \App\Models\Setting::get('bank_account', 'BSI 1234567890 a.n DKM Masjid') }}</strong>.<br>
+                    Setelah transfer, segera konfirmasi melalui tombol "Hubungi Kami" di halaman depan agar Admin dapat mencatat setoran Anda di sistem.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="accordion-item border-0 mb-2 shadow-sm rounded">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    4. Apakah ada notifikasi ketika uang saya sudah dicatat?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    Ya, setiap kali Admin memverifikasi dan mencatat uang masuk dari Anda, Anda akan menerima laporan otomatis melalui pesan WhatsApp.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
     </div>
 </body>
 </html>

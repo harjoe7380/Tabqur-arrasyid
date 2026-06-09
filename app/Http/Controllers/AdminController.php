@@ -111,10 +111,25 @@ class AdminController extends Controller
 
     public function updateSettings(Request $request)
     {
+        $request->validate([
+            'logo_tabqur' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'logo_dkm' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+
         Setting::set('dkm_name', $request->dkm_name);
         Setting::set('dkm_address', $request->dkm_address);
         Setting::set('bank_account', $request->bank_account);
         Setting::set('admin_phone', $request->admin_phone);
+
+        if ($request->hasFile('logo_tabqur')) {
+            $path = $request->file('logo_tabqur')->store('logos', 'public');
+            Setting::set('logo_tabqur', $path);
+        }
+
+        if ($request->hasFile('logo_dkm')) {
+            $path = $request->file('logo_dkm')->store('logos', 'public');
+            Setting::set('logo_dkm', $path);
+        }
 
         return back()->with('success', 'Pengaturan DKM berhasil disimpan.');
     }
