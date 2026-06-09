@@ -13,5 +13,10 @@ php artisan view:cache
 # Buat symbolic link untuk folder storage (wajib untuk gambar/bukti transfer)
 php artisan storage:link
 
-# Start Apache in foreground
-apache2-foreground
+# Eksekusi argumen yang diteruskan dari Render (contoh: php artisan tabqur:monthly-report)
+# Jika tidak ada argumen, jalankan server web (apache2-foreground)
+if [ $# -gt 0 ]; then
+    exec "$@"
+else
+    apache2-foreground
+fi
