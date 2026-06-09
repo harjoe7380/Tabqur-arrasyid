@@ -285,6 +285,11 @@
                 <input type="text" name="bank_account" class="form-control" value="{{ \App\Models\Setting::get('bank_account', 'BSI 1234567890 a.n DKM Masjid') }}" required>
             </div>
             <div class="mb-3">
+                <label>Instruksi Tambahan Setoran / Kode Unik</label>
+                <textarea name="unique_code_instruction" class="form-control" placeholder="Cth: Tambahkan dengan kode unik 077">{{ \App\Models\Setting::get('unique_code_instruction', 'Tambahkan dengan kode unik 077') }}</textarea>
+                <small class="text-muted">Keterangan ini akan muncul saat jamaah melakukan setor tabungan.</small>
+            </div>
+            <div class="mb-3">
                 <label>Nomor WA Admin Utama</label>
                 <input type="text" name="admin_phone" class="form-control" value="{{ \App\Models\Setting::get('admin_phone', env('ADMIN_PHONE')) }}">
                 <small class="text-muted">Untuk menerima notifikasi transfer dari jamaah.</small>

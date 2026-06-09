@@ -94,7 +94,10 @@
         @csrf
         <div class="modal-body">
             <div class="alert alert-info">
-                Silakan transfer setoran Anda ke Rekening DKM: <strong>BSI 1234567890 a.n DKM Masjid</strong>, lalu unggah buktinya di sini.
+                Silakan transfer setoran Anda ke Rekening DKM: <strong>{{ \App\Models\Setting::get('bank_account', 'BSI 1234567890 a.n DKM Masjid') }}</strong>, lalu unggah buktinya di sini.
+                @if(\App\Models\Setting::get('unique_code_instruction'))
+                <br><br><strong>Catatan:</strong> {{ \App\Models\Setting::get('unique_code_instruction') }}
+                @endif
             </div>
             <div class="mb-3">
                 <label>Nominal Setoran (Rp)</label>

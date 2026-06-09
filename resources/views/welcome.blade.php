@@ -179,6 +179,10 @@
         @endphp
         <a href="https://wa.me/{{ $adminPhone }}" target="_blank" class="link-btn">Hubungi Kami (WhatsApp)</a>
         
+        <button type="button" class="link-btn" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
+            Konfirmasi Setoran
+        </button>
+
         <button type="button" class="link-btn" data-bs-toggle="modal" data-bs-target="#faqModal">
             FAQ (Tanya Jawab)
         </button>
@@ -258,6 +262,29 @@
           </div>
           <div class="modal-footer border-0">
             <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Konfirmasi Setoran -->
+    <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+            <h5 class="modal-title fw-bold" id="konfirmasiModalLabel">Pilih Jalur Konfirmasi</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4 text-center">
+            <p class="mb-4">Bagaimana Anda ingin mengonfirmasi setoran Anda?</p>
+            <a href="{{ route('login') }}" class="btn btn-outline-primary w-100 mb-3 fw-bold rounded-pill p-3">
+                📱 Login ke Aplikasi<br>
+                <small class="fw-normal">Lewat menu "Lapor Setoran" di Dasbor Anda.</small>
+            </a>
+            <a href="https://wa.me/{{ $adminPhone }}?text={{ urlencode('Assalamu\'alaikum Admin, saya ingin mengonfirmasi setoran tabungan kurban saya.') }}" target="_blank" class="btn btn-outline-success w-100 fw-bold rounded-pill p-3">
+                💬 Konfirmasi via WhatsApp<br>
+                <small class="fw-normal">Hubungi admin untuk verifikasi manual.</small>
+            </a>
           </div>
         </div>
       </div>

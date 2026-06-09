@@ -120,6 +120,7 @@ class AdminController extends Controller
         Setting::set('dkm_address', $request->dkm_address);
         Setting::set('bank_account', $request->bank_account);
         Setting::set('admin_phone', $request->admin_phone);
+        Setting::set('unique_code_instruction', $request->unique_code_instruction);
 
         if ($request->hasFile('logo_tabqur')) {
             $path = $request->file('logo_tabqur')->store('logos', 'public');
