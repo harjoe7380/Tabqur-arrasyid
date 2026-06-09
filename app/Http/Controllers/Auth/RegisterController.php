@@ -93,6 +93,19 @@ class RegisterController extends Controller
                 \App\Services\FonnteService::sendMessage($user->no_hp, $msg);
             }
 
+            // Send WA Notification to Admin
+            $adminPhone = \App\Models\Setting::get('admin_phone', env('ADMIN_PHONE'));
+            if ($adminPhone) {
+                $adminMsg = "⚠️ *Pendaftaran Jamaah Baru* ⚠️\n\n";
+                $adminMsg .= "Ada pendaftar baru di sistem Tabqur:\n";
+                $adminMsg .= "Nama: *" . $user->name . "*\n";
+                $adminMsg .= "Target Kurban: *Rp " . number_format($data['target_amount'], 0, ',', '.') . "*\n";
+                $adminMsg .= "No WA: " . $user->no_hp . "\n\n";
+                $adminMsg .= "Mohon cek Dasbor Admin untuk info lebih lanjut.";
+
+                \App\Services\FonnteService::sendMessage($adminPhone, $adminMsg);
+            }
+
             return $user;
         });
     }

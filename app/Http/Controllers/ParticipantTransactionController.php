@@ -38,7 +38,7 @@ class ParticipantTransactionController extends Controller
         ]);
 
         // Send WA to Admin
-        $adminPhone = env('ADMIN_PHONE');
+        $adminPhone = \App\Models\Setting::get('admin_phone', env('ADMIN_PHONE'));
         if ($adminPhone) {
             $msg = "⚠️ *Notifikasi Laporan Setoran Baru* ⚠️\n\n";
             $msg .= "Jamaah: *" . Auth::user()->name . "*\n";
