@@ -143,10 +143,12 @@
         <!-- Logos -->
         <div class="logo-container">
             @if(\App\Models\Setting::get('logo_tabqur'))
-                <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_tabqur')) }}" alt="Logo Tabqur" class="logo-img">
+                @php $lt = \App\Models\Setting::get('logo_tabqur'); @endphp
+                <img src="{{ str_starts_with($lt, 'data:image') ? $lt : asset('storage/' . $lt) }}" alt="Logo Tabqur" class="logo-img">
             @endif
             @if(\App\Models\Setting::get('logo_dkm'))
-                <img src="{{ asset('storage/' . \App\Models\Setting::get('logo_dkm')) }}" alt="Logo DKM" class="logo-img">
+                @php $ld = \App\Models\Setting::get('logo_dkm'); @endphp
+                <img src="{{ str_starts_with($ld, 'data:image') ? $ld : asset('storage/' . $ld) }}" alt="Logo DKM" class="logo-img">
             @endif
             @if(!\App\Models\Setting::get('logo_tabqur') && !\App\Models\Setting::get('logo_dkm'))
                 <div class="logo-img d-flex align-items-center justify-content-center bg-success text-white fw-bold fs-3">

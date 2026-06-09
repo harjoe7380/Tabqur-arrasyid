@@ -24,8 +24,9 @@ class ParticipantTransactionController extends Controller
             return back()->with('error', 'Peserta tidak ditemukan.');
         }
 
-        // Upload image
-        $path = $request->file('proof')->store('proofs', 'public');
+        // Upload image as Base64
+        $file = $request->file('proof');
+        $path = 'data:image/' . $file->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($file));
 
         $trx = Transaction::create([
             'participant_id' => $participant->id,

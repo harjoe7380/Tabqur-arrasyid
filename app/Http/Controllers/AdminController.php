@@ -123,16 +123,18 @@ class AdminController extends Controller
         Setting::set('unique_code_instruction', $request->unique_code_instruction);
 
         if ($request->hasFile('logo_tabqur')) {
-            $path = $request->file('logo_tabqur')->store('logos', 'public');
-            Setting::set('logo_tabqur', $path);
+            $file = $request->file('logo_tabqur');
+            $base64 = 'data:image/' . $file->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($file));
+            Setting::set('logo_tabqur', $base64);
         }
 
         if ($request->hasFile('logo_dkm')) {
-            $path = $request->file('logo_dkm')->store('logos', 'public');
-            Setting::set('logo_dkm', $path);
+            $file = $request->file('logo_dkm');
+            $base64 = 'data:image/' . $file->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($file));
+            Setting::set('logo_dkm', $base64);
         }
 
-        return back()->with('success', 'Pengaturan DKM berhasil disimpan.');
+        return back()->with('success', 'Pengaturan berhasil diperbarui.');
     }
 
     public function storeTransaction(Request $request)
@@ -150,7 +152,9 @@ class AdminController extends Controller
         $data['status'] = 'verified';
 
         if ($request->hasFile('proof')) {
-            $data['proof_path'] = $request->file('proof')->store('proofs', 'public');
+            $file = $request->file('proof');
+            $base64 = 'data:image/' . $file->getClientOriginalExtension() . ';base64,' . base64_encode(file_get_contents($file));
+            $data['proof_path'] = $base64;
         }
 
         $trx = Transaction::create($data);

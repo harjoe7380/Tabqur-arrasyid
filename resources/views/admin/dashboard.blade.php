@@ -137,7 +137,8 @@
                             <td class="fw-bold">Rp {{ number_format($trx->amount, 0, ',', '.') }}</td>
                             <td>
                                 @if($trx->proof_path)
-                                    <a href="{{ asset('storage/' . $trx->proof_path) }}" target="_blank" download class="btn btn-sm btn-outline-primary" title="Download Bukti">⬇️ Bukti</a>
+                                    @php $proofUrl = str_starts_with($trx->proof_path, 'data:image') ? $trx->proof_path : asset('storage/' . $trx->proof_path); @endphp
+                                    <a href="{{ $proofUrl }}" target="_blank" download="Bukti_Trx_{{ $trx->id }}" class="btn btn-sm btn-outline-primary" title="Download Bukti">⬇️ Bukti</a>
                                 @endif
                                 <a href="{{ route('admin.receipt.pdf', $trx->id) }}" class="btn btn-sm btn-outline-danger">📄 PDF</a>
                                 <a href="{{ route('admin.receipt.wa', $trx->id) }}" class="btn btn-sm btn-outline-success">💬 WA</a>
